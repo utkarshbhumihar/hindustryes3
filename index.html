@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<style type="text/css">
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+/*===== VARIABLES CSS =====*/
+:root{
+  --header-height: 3rem;
+  --font-semi: 600;
+}
+
+/*===== Colores =====*/
+:root{
+  --first-color: #4070F4;
+  --second-color: #0E2431;
+}
+
+/*===== Fuente y tipografia =====*/
+:root{
+  --body-font: 'Poppins', sans-serif;
+  --big-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 0.938rem;
+}
+@media screen and (min-width: 768px){
+  :root{
+    --big-font-size: 3.5rem;
+    --h2-font-size: 2rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*===== Margenes =====*/
+:root{
+  --mb-1: 0.5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+}
+
+/*===== z index =====*/
+:root{
+  --z-back: -10;
+  --z-normal: 1;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*===== BASE =====*/
+*,::before,::after{
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+body{
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+main{
+  background:#a1a5af;
+}
+h1,h2,p{
+  margin: 0;
+}
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*===== CLASS CSS ===== */
+.section-title{
+  position: relative;
+  font-size: var(--h2-font-size);
+  color: var(--first-color);
+  margin-top: var(--mb-2);
+  margin-bottom: var(--mb-4);
+  text-align: center;
+}
+.section-title::after{
+  position: absolute;
+  content: "";
+  width: 64px;
+  height: 0.18rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+.section{
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+/*===== LAYOUT =====*/
+.bd-grid{
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-column-gap: 2rem;
+  width: calc(100% - 2rem);
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2);
+}
+.l-header{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(146,161,176,.15);
+}
+
+/*===== NAV =====*/
+.nav{
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-semi);
+}
+@media screen and (max-width: 768px){
+  .nav__menu{
+    position: fixed;
+    top: var(--header-height);
+    right: -100%;
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
+    background-color: var(--second-color);
+    transition: .5s;
+  }
+}
+.nav__item{
+  margin-bottom: var(--mb-4);
+}
+.nav__link{
+  position: relative;
+  color: #fff;
+}
+.nav__link:hover{
+  position: relative;
+}
+.nav__link:hover::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0.18rem;
+  left: 0;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+.nav__logo{
+  color: var(--second-color);
+}
+.nav__toggle{
+  color: var(--second-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/*Active menu*/
+.active::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0.18rem;
+  left: 0;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+
+/*=== Show menu ===*/
+.show{
+  right: 0;
+}
+
+/*===== HOME =====*/
+#home{
+  margin-top:50px;
+}
+.home{
+  height: calc(100vh - 3rem);
+  row-gap: 1rem;
+}
+.home__data{
+  align-self: center;
+}
+.home__title{
+  font-size: var(--big-font-size);
+  margin-bottom: var(--mb-5);
+}
+.home__title-color{
+  color: var(--first-color);
+}
+.home__social{
+  display: flex;
+  flex-direction: column;
+}
+.home__social-icon{
+  width: max-content;
+  margin-bottom: var(--mb-2);
+  font-size: 1.5rem;
+  color: var(--second-color);
+}
+.home__social-icon:hover{
+  color: var(--first-color);
+}
+.home__img{
+  margin-top: top 50px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 295px;
+}
+
+/*BUTTONS*/
+.button{
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: .75rem 2.5rem;
+  font-weight: var(--font-semi);
+  border-radius: .5rem;
+}
+.button:hover{
+  box-shadow: 0 10px 36px rgba(0,0,0,.15);
+}
+.card-img-top{
+  width:150px;
+  height:150px;
+
+}
+.card{
+  box-shadow:0 4px 25px rgba(14,36,49,.15);
+  padding:5px;
+  margin:10px;
+}
+/* ===== ABOUT =====*/
+.about__container{
+  row-gap: 2rem;
+  text-align: center;
+}
+.about__subtitle{
+  margin-bottom: var(--mb-2);
+}
+.about__img{
+  justify-self: center;
+}
+.about__img img{
+  width: 200px;
+  border-radius: .5rem;
+}
+
+/* ===== SKILLS =====*/
+.skills__name{
+  margin-left:5px;
+}
+.skills__names{
+  display: flex;
+  align-items: center;
+}
+.skills__subtitle{
+  margin-bottom: var(--mb-2);
+}
+.skills__text{
+  margin-bottom: var(--mb-4);
+}
+.skills__data{
+  font-weight: var(--font-semi);
+  padding: .5rem 1rem;
+  margin-bottom: var(--mb-4);
+  background:#fff;
+  border-radius: .5rem;
+  box-shadow: 0 4px 25px rgba(14,36,49,.15);
+}
+
+.work__data{
+  font-weight: var(--font-semi);
+  padding: .5rem 1rem;
+  margin-bottom: var(--mb-4);
+  color:#fff;
+  background:rgb(0, 0, 0);
+  border-radius: .5rem;
+  box-shadow: 0 4px 25px rgba(14,36,49,.15);
+}
+/* ===== CONTACT =====*/
+.contact__input{
+  width: 100%;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi);
+  padding: 1rem;
+  border-radius: .5rem;
+  border: 1.5px solid var(--second-color);
+  outline: none;
+  margin-bottom: var(--mb-4);
+}
+.contact__button{
+  display: block;
+  border: none;
+  outline: none;
+  font-size: var(--normal-font-size);
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* ===== FOOTER =====*/
+.footer{
+  background-color: var(--second-color);
+  color: #fff;
+  text-align: center;
+  font-weight: var(--font-semi);
+  padding: 2rem 0;
+}
+.footer__title{
+  font-size: 2rem;
+  margin-bottom: var(--mb-4);
+}
+.footer__social{
+  margin-bottom: var(--mb-4);
+}
+.footer__icon{
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 var(--mb-2)
+}
+
+/* ===== MEDIA QUERIES=====*/
+@media screen and (min-width: 768px){
+  body{
+    margin: 0;
+  }
+  .section{
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+  .section-title{
+    margin-bottom: var(--mb-6);
+  }
+  .section-title::after{
+    width: 80px;
+    top: 3rem;
+  }
+
+  .nav{
+    height: calc(var(--header-height) + 1rem);
+  }
+  .nav__list{
+    display: flex;
+    padding-top: 0;
+  }
+  .nav__item{
+    margin-left: var(--mb-6);
+    margin-bottom: 0;
+  }
+  .nav__toggle{
+    display: none;
+  }
+  .nav__link{
+    color: var(--second-color);
+  }
+
+  .home{
+    height: 100vh;
+  }
+  .home__data{
+    align-self: flex-end;
+  }
+  .home__social{
+    padding-top: 0;
+    padding-bottom: 2.5rem;
+    flex-direction: row;
+    align-self: flex-end;
+  }
+  .home__social-icon{
+    margin-bottom: 0;
+    margin-right: var(--mb-4);
+  }
+  .home__img{
+    width: 457px;
+    bottom: 15%;
+  }
+
+  .about__container{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .about__img img{
+    width: 300px;
+  }
+  .work__container{
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2,1fr);
+    column-gap: 2rem;
+  }
+  .contact__form{
+    width: 360px;
+  }
+  .contact__container{
+    justify-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .bd-grid{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .home__img{
+    right: 10%;
+  }
+}
+
+
+</style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            
+        <!-- BOX ICONS -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Utkarsh rai</title>
+    </head>
+    <body style="background-color: powerblue;">
+        <!-- HEADER -->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">Utkarsh</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="#work" class="nav__link">Project</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                        <li class="nav__item"><a href="#education" class="nav__link">Education</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+        <main class="l-main show">
+            <!-- HOME -->
+            <section class="home bd-grid" id="home">
+                <div class="home__data">
+                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Utkarsh rai</span><br><span id="typing"></span></h1>
+
+                    <a href="" class="button">Download CV</a>
+                </div>
+
+                <div class="home__social">
+                  
+                  
+                    
+                    <a href="https://www.facebook.com/https://m.facebook.com/utkarshraiyoutube.blogspot/" class="home__social-icon"><i class='bx bxl-facebook' ></i></a>
+                    
+                    
+                    <a href="https://github.com/hindustryes" class="home__social-icon"><i class='bx bxl-github' ></i></a>
+                    
+                    
+                     
+                </div>
+
+                <div class="home__img">  
+                    
+                    <img src="https://1.bp.blogspot.com/-ui37BKA-yrA/X2h0ooq1j0I/AAAAAAAACpA/XaYJDnCx-XQ6m4FowN0IeCoXO-MJKCVAwCLcBGAsYHQ/s540/BeautyPlus_20190126165012260_save.jpg" alt="Profile Image" style="border-radius: 100px 100px 100px 100px;">
+                  
+                </div>
+            </section>
+
+            <!-- College -->
+            <section class="about section " id="about">
+                <h2 class="section-title">About</h2>
+
+                <div class="about__container bd-grid">
+                    <div class="about__img">
+                        
+                      <img src="https://1.bp.blogspot.com/-ui37BKA-yrA/X2h0ooq1j0I/AAAAAAAACpA/XaYJDnCx-XQ6m4FowN0IeCoXO-MJKCVAwCLcBGAsYHQ/s540/BeautyPlus_20190126165012260_save.jpg" alt="Profile Image" style="border-radius: 50%;">
+                    
+                    </div>
+                    
+                    <div>
+                        <h2 class="about__subtitle">A Little About Utkarsh</h2> 
+                       <b>
+                         <p> I am Utkarsh Rai a student of class 10 (2020-21). I am a technology lover I know Web Development, some terms of Android Development and hacking using an Android device or a computer with linux operating system. I also know a lot about spamming tricks. I am proud to be an Indian. </p>
+                       </b>
+
+                    </div>                                   
+                </div>
+            </section>
+
+            <section class="work section" id="education">
+              <h2 class="section-title">Education</h2>
+              <div class="container">
+                
+                  <div class="row work__data">
+                      <div class="col-3">
+                        <img src="https://img.icons8.com/dusk/150/000000/university.png"/>                      </div>
+                      <div class="col-9">
+                          <div>
+                            
+                              <h5>Class lkg to 7</h5>
+                              
+                          </div>
+                          <div>
+                            
+                              <p>2007-2016</p>
+                              
+                          </div>
+                          <div>
+                            
+                              <h5>Hp childrens academy</h5>
+                              
+                          </div>
+                      </div>
+                  </div>
+                  
+                  
+                  <div class="row work__data">
+                    <div class="col-3">
+                      <img src="https://img.icons8.com/dusk/150/000000/university.png"/>                     </div>
+                    <div class="col-9">
+                        <div>
+                          
+                            <h5>Class 8</h5>
+                            
+                        </div>
+                        <div>
+                          
+                            <p>2017-18</p>
+                            
+                        </div>
+                        <div>
+                          
+                            <h5>Aatmdeep Vidyalaya </h5>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="row work__data">
+                  <div class="col-3">
+                    <img src="https://img.icons8.com/dusk/150/000000/university.png"/>                   </div>
+                  <div class="col-9">
+                      <div>
+                        
+                          <h5>Class 9</h5>
+                          
+                      </div>
+                      <div>
+                        
+                          <p>2018-19</p>
+                          
+                      </div>
+                      <div>
+                        
+                          <h5>HP childrens academy, Civil lines</h5>
+                          
+                      </div>
+                      
+                  </div>
+              </div>
+              
+              
+              <div class="row work__data">
+                <div class="col-3">
+                  <img src="https://img.icons8.com/dusk/150/000000/university.png"/> 
+                </div>
+                <div class="col-9">
+                    <div>
+                      
+                        <h5>Class 9-10</h5>
+                        
+                    </div>
+                    <div>
+                      
+                        <p>2019-2020</p>
+                        
+                    </div>
+                    <div>
+                      
+                        <h5>ABC Public School</h5>
+                        
+                    </div>
+                </div>
+            </div>
+            
+              </div>
+                  
+              </div>
+          </section>
+
+
+
+            <!--SKILLS -->
+            <section class="skills section" id="skills">
+                <h2 class="section-title">Skills</h2>
+
+                <div class="container">          
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <h2 class="skills__subtitle">Work Skills</h2>
+                          
+                        <div class="skills__data">
+                            <div class="skills__names">
+                              <img src="https://img.icons8.com/fluent/24/000000/development-skill.png"/>
+                                <span class="skills__name">No work skills</span>
+                            </div> 
+                        </div>
+                        
+                        
+                        </div>
+
+                    </div>
+                    
+          
+                </div>
+
+                <div class="container">          
+                  <div class="row">
+                    
+                      <div class="col-sm-6">
+                        <h2 class="skills__subtitle">Certifications</h2>
+                        
+                        
+                      <div class="skills__data">
+                          <div class="skills__names">
+                            <img src="https://img.icons8.com/fluent/24/000000/contract.png"/>
+                              <span class="skills__name"> HTML Fundamental Course</span>
+                              <span style="margin-left:10px;"><a href="https://www.sololearn.com/Certificate/1014-18915278/pdf/">Verify</a></span>
+                          </div> 
+                      </div>
+                      
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                      </div>
+                      
+                      
+
+                  </div>
+                  
+        
+              </div>
+            </section>
+
+            <section class="work section" id="">
+              <h2 class="section-title">Internships/Work Experience</h2>
+              <div class="container">
+                
+                  <div class="row work__data">
+                      <div class="col-3">
+                          <img src="https://www.freeiconspng.com/uploads/experience-information-image-job-knowledge-concept-icon-symbol-5.png " width="150" height="150">
+                      </div>
+                      <div class="col-9">
+                          <div>
+                            
+                              <h3>No experience</h3>
+                              
+                          </div>
+                          <div>
+                            
+                          </div>
+                          <div>
+                            
+                              <h5>No</h5>
+                              
+                          </div>
+                          <div>
+                            
+                          </div>
+                          <div>
+                            
+                          </div>
+                      </div>
+                  </div>
+                  
+                  
+                
+              
+            
+
+              </div>
+                  
+              </div>
+          </section>
+
+
+
+
+            <!-- PROJECT-->
+            <section class="work section" id="work">
+                <h2 class="section-title">Project</h2>
+              
+                <div class="container">
+                    <div class="row skills__data">
+                        <div class="col-3">
+                            <img src="https://image.flaticon.com/icons/png/512/1087/1087815.png" width="150" height="150">
+                        </div>
+                        <div class="col-9">
+                            <div>
+                              
+                                <h3>I upload all my project to github</h3>
+                                
+                            </div>
+                            <div>
+                              
+                            </div>
+                            <div>
+                              
+                                <a href="https://github.com/hindustryes"><button class="btn-warning">View Source</i></button></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+
+                        
+                    
+                    
+                </div>
+                    
+                </div>
+            </section>
+
+            <section>
+              <div class="container">
+                <h2 class="section-title">Lastest Blog</h2>
+                <div class="row" style="text-align: center;">
+                  
+                  <div class="col-sm-4">
+                    <div class="card">
+                      <img class="card-img-top" src="https://source.unsplash.com/400x300/?blog,code" alt="blog" style="width:100%">
+                      <div class="card-body">
+                        <a href="https://github.com/hindustryes"><p class="card-text">GitHub projects</p></a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="col-sm-4">
+                    <div class="card">
+                      <img class="card-img-top" src="https://source.unsplash.com/400x300/?blog,code" alt="blog" style="width:100%">
+                      <div class="card-body">
+                        <a href="https://hindustryes.blogspot.com/2020/08/?m=1"><p class="card-text">By personal blog</p></a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="col-sm-4">
+                    <div class="card">
+                      <img class="card-img-top" src="https://source.unsplash.com/400x300/?blog,code" alt="blog" style="width:100%">
+                      <div class="card-body">
+                        <a href="https://hindustryes1.blogspot.com/?m=1"><p class="card-text">My Official blog</p></a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+
+              </div>
+
+            </section>
+
+
+
+            <!--CONTACT -->
+            <section class="contact section" id="contact">
+                <h2 class="section-title container">Contact</h2>
+
+                <div style="text-align: center;margin-bottom: 20px;">
+                  <h1 style="margin-bottom: 20px;">Get In Touch</h1>
+                  <hr class="mt-20 mb-3" />
+                  
+                  <h5 style="margin-top: 70px;">I'd love if you reached out to me. Even if it's just to say "Hey!". Don't hesitate! Drop me a line and I’ll get back to you ASAP!
+              </h5>
+                  <h5></h5>
+                  
+              </div>
+              <div class="container" style="text-align: center;">
+                <div class="footer__social">
+                  
+                  
+                    
+                    <a href="https://www.facebook.com/https://m.facebook.com/utkarshraiyoutube.blogspot/" class="home__social-icon"><i class='bx bxl-facebook' ></i></a>
+                    
+                    
+                    <a href="https://github.com/hindustryes" class="home__social-icon"><i class='bx bxl-github' ></i></a>
+                    
+                    
+                     
+
+                     
+                     
+                     
+                     
+                      
+                      <a href="https://www.youtube.com/c/utkarshraiyoutubeblogspot" class="home__social-icon"><i class='bx bxl-youtube'></i></a>
+                      
+                </div>
+              </div>
+          <div class="row" style="text-align: center; margin: 40px 0 80px 0;">
+              <div class="col-sm-4 contact-mobile" style="margin-top:20px ;">
+          <div>
+              <i class="large material-icons">local_phone</i>
+          </div>
+          <div>
+              <h5>Call me On</h5>
+              
+              <h6>Not Available</h6>
+              
+          </div>
+              </div>
+              <div class="col-sm-4 contact-location" style="margin-top:20px ;">
+                  <div>
+                      <i class="large material-icons">location_on</i>
+                  </div>
+                  <div>
+                      <h5>Visite Here</h5>
+                      
+                      <h6>D-107 Divyanagar , Gorakhpur</h6>
+                      
+                  </div>
+                      </div>
+                      <div class="col-sm-4 contact-email" style="margin-top:20px ;">
+                          <div>
+                              <i class="large material-icons">email</i>
+                          </div>
+                          <div>
+                              <h5>Email me On</h5>
+                              <h6>utkarsh14january@gmail.com</h6>
+                          </div>
+                      </div>
+              </div>
+              
+            </section>
+        
+
+        <!--FOOTER -->
+        <footer class="footer">
+            <p class="footer__title">Utkarsh</p>
+            <div class="footer__social">
+              
+              
+              <a href="https://www.facebook.com/https://m.facebook.com/utkarshraiyoutube.blogspot/" class="footer__social-icon"><i class='bx bxl-facebook' ></i></a>
+              
+              
+              <a href="https://github.com/hindustryes" class="footer__social-icon"><i class='bx bxl-github' ></i></a>
+              
+              
+               
+            </div>
+            <p>Copyright © 2020 Utkarsh rai,All rights reserved. 
+              Powered by
+              <a style="text-decoration: none; color: tomato; font-weight: bold;" href="https://hindustryes1.blogspot.com/?m=1"> Utkarsh Industryes</a>
+            </p>
+        </footer>
+      </main>
+
+        <!-- SCROLL REVEAL -->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!-- MAIN JS -->
+        <script>
+            /*===== MENU SHOW =====*/ 
+const showMenu = (toggleId, navId) =>{
+    const toggle = document.getElementById(toggleId),
+    nav = document.getElementById(navId)
+
+    if(toggle && nav){
+        toggle.addEventListener('click', ()=>{
+            nav.classList.toggle('show')
+        })
+    }
+}
+showMenu('nav-toggle','nav-menu')
+
+/*===== ACTIVE AND REMOVE MENU =====*/
+const navLink = document.querySelectorAll('.nav__link');   
+
+function linkAction(){
+  /*Active link*/
+  navLink.forEach(n => n.classList.remove('active'));
+  this.classList.add('active');
+  
+  /*Remove menu mobile*/
+  const navMenu = document.getElementById('nav-menu')
+  navMenu.classList.remove('show')
+}
+navLink.forEach(n => n.addEventListener('click', linkAction));
+
+/*===== SCROLL REVEAL ANIMATION =====*/
+const sr = ScrollReveal({
+    origin: 'top',
+    distance: '80px',
+    duration: 2000,
+    reset: true
+});
+/*SCROLL HOME*/
+sr.reveal('.home__title',{}); 
+sr.reveal('.button',{delay: 200}); 
+sr.reveal('.home__img',{delay: 400}); 
+sr.reveal('.home__social-icon',{ interval: 200}); 
+
+/*SCROLL ABOUT*/
+sr.reveal('.about__img',{}); 
+sr.reveal('.about__subtitle',{delay: 400}); 
+
+/*SCROLL SKILLS*/
+sr.reveal('.skills__subtitle',{}); 
+sr.reveal('.skills__text',{}); 
+sr.reveal('.skills__data',{interval: 200}); 
+sr.reveal('.skills__img',{delay: 600});
+
+/*SCROLL WORK*/
+sr.reveal('.work__img',{interval: 200}); 
+sr.reveal('.work__data',{interval:200});
+
+/*SCROLL CONTACT*/
+sr.reveal('.contact-mobile',{interval: 0});
+sr.reveal('.contact-location',{interval: 100});
+sr.reveal('.contact-email',{interval: 200}); 
+
+var typeString=JSON.parse('["Web Developer", "Android Developer"]');
+    var i=0;
+    var count=0;
+    var selectedText="";
+    var text="";
+    (function type() {
+        if (count==typeString.length) {
+            count=0;
+        }
+        selectedText=typeString[count];
+        text=selectedText.slice(0,++i);
+        document.querySelector('#typing').innerHTML=text;
+        document.querySelector('#typing').style.color="red";
+        document.querySelector('#typing').style.fontSize="xx-large";
+
+        if (text.length===selectedText.length) {
+            count++;
+            i=0;
+        }
+    
+        setTimeout(type,250);
+    }());
+    function sleep(milliseconds) {
+        var start=new Date().getTime();
+        for (let i = 0; i < 1e7; i++) {
+            if ((new Date().getTime)-start)  milliseconds 
+                break;
+            }
+            
+        }
+
+    </script>
+<!-- User Can get These code -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+         
+    </body>
+</html>
+      
